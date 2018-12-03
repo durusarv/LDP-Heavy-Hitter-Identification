@@ -11,10 +11,10 @@ def main():
         print(sampSet)
     return 0
 
-def setOfSamples(sampleSize, numOfSamples):
+def setOfSamples(sampleSize, numOfGroups):
     sampleSet = []
     i = 0
-    while (i < numOfSamples):
+    while (i < numOfGroups):
         sampleSet.append(sampleData(sampleSize))
         i += 1
     return sampleSet
