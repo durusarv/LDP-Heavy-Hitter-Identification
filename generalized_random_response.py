@@ -37,8 +37,8 @@ class GRR:
 
     def aggregator(self):
         for i in range(self.numUsers):
-            for j in range(self.d):
-                if pertubed[i] == self.d[j]:
-                    self.estimate[j] += 1
+            for j in range(self.numUsers):
+                if self.pertubed[i] == self.pertubed[j]:
+                    self.estimate[i] += 1
         for i in range(self.estimate):
             self.estimate[i] = (self.estimate[i] - (self.numUsers * self.q)) / (self.p - self.q)

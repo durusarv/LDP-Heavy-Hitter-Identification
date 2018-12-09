@@ -5,34 +5,28 @@ import nltk
 nltk.download('brown')
 from nltk.corpus import brown
 
-def main():
-    sampleSet = setOfSamples(5, 5)
-    for sampSet in sampleSet:
-        print(sampSet)
-    return 0
+class SampleSelector:
 
-def setOfSamples(sampleSize, numOfGroups):
-    sampleSet = []
-    i = 0
-    while (i < numOfGroups):
-        sampleSet.append(sampleData(sampleSize))
-        i += 1
-    return sampleSet
+def __init__(self, sampleSize, category):
+    self.sampleSize = sampleSize
+    self.category = category
 
-def sampleData(sampleSize):
-    sampleSet = []
-    words = brown.words()
-    i = 0
-    while (i < sampleSize):
-        rand = random.randint(0,len(words))
-        randWord = words[rand].lower()
-        while (not randWord[0].isalpha() and len(randWord) == 1):
+    def getNewSampleSet(sampleSize, category):
+        sampleSet = []
+        words = brown.words(categories = self.category)
+        i = 0
+        while (i < self.sampleSize):
             rand = random.randint(0,len(words))
             randWord = words[rand].lower()
-        sampleSet.append(randWord)
-        i += 1
-        
-    return sampleSet
+            while (not randWord[0].isalpha() and len(randWord) == 1):
+                rand = random.randint(0,len(words))
+                randWord = words[rand].lower()
+            sampleSet.append(randWord)
+            i += 1
+        return sampleSet
 
-if __name__ == "__main__":
-    main()
+    def setSampleSize(size):
+        self.sampleSize = size;
+
+    def setCategory(category):
+        self.category = cat
