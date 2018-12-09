@@ -16,10 +16,9 @@ class GRR:
         self.epsilon = epsilon
         self.p = math.exp(self.epsilon) / (math.exp(self.epsilon) + self.d - 1)
 
-        self.estimate = np.zeros(self.d)
-
         self.numUsers = len(data)
-        self.perturbed = np.zeros(self.numUsers)
+        self.estimate = np.zeros(self.numUsers)
+        self.perturbed = self.estimate = ["" for x in range(self.numUsers)]
 
         self.q = 1 / (math.exp(self.epsilon) + self.d - 1)
 
