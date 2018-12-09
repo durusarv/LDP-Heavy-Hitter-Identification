@@ -7,11 +7,12 @@ from nltk.corpus import brown
 
 class SampleSelector:
 
-def __init__(self, sampleSize, category):
-    self.sampleSize = sampleSize
-    self.category = category
+    def __init__(self, sampleSize, category):
+        self.sampleSize = sampleSize
+        self.category = category
+        self.sampleSet = self.getNewSampleSet()
 
-    def getNewSampleSet(sampleSize, category):
+    def getNewSampleSet(self):
         sampleSet = []
         words = brown.words(categories = self.category)
         i = 0
@@ -25,8 +26,8 @@ def __init__(self, sampleSize, category):
             i += 1
         return sampleSet
 
-    def setSampleSize(size):
+    def setSampleSize(self, size):
         self.sampleSize = size;
 
-    def setCategory(category):
+    def setCategory(self, category):
         self.category = cat

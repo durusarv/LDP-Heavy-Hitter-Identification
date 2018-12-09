@@ -9,36 +9,38 @@ import math
 
 class GRR:
 
-    def __init__(self, dist, epsilon, domain, data):
+    def __init__(self, epsilon, domain, data):
 
+        self.data = data
         self.d = domain
         self.epsilon = epsilon
         self.p = math.exp(self.epsilon) / (math.exp(self.epsilon) + self.d - 1)
 
-        self.real = dist
         self.estimate = np.zeros(self.d)
 
         self.numUsers = len(data)
         self.perturbed = np.zeros(self.numUsers)
 
-        self.q = 1 / (math.exp(eps) + d - 1)
-        #self.randomIdxs = np.random.rand(1, self.numUsers)
+        self.q = 1 / (math.exp(self.epsilon) + self.d - 1)
+
+        self.pi()
+        self.aggregator()
 
     def pi(self):
         for i in range(self.numUsers):
             coin = np.random.random()
             if coin <= self.p:
-                self.pertubed[i] = data[i]
+                self.perturbed[i] = self.data[i]
             else:
-                temp = np.random.randint(0, len(data) - 1
+                temp = np.random.randint(0, len(self.data) - 1)
                 if (temp == i):
                     temp += 1
-                self.pertubed[i] = data[temp]
+                self.perturbed[i] = self.data[temp]
 
     def aggregator(self):
         for i in range(self.numUsers):
             for j in range(self.numUsers):
-                if self.pertubed[i] == self.pertubed[j]:
+                if self.perturbed[i] == self.perturbed[j]:
                     self.estimate[i] += 1
         for i in range(self.estimate):
             self.estimate[i] = (self.estimate[i] - (self.numUsers * self.q)) / (self.p - self.q)
