@@ -4,7 +4,7 @@ from generalized_random_response import GRR
 
 def main():
     domain = 15
-    epsilon = 0
+    epsilon = 1
     ss = SampleSelector(domain, 'news')
     sampleSet = ss.sampleSet
 

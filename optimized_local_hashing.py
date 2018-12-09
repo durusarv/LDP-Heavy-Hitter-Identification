@@ -21,7 +21,7 @@ class OLH:
         self.perturbed = np.zeros(self.numUsers)
 
         self.randomIdxs = np.random.rand(1, self.numUsers)
-
+        print(self.randomIdxs)
         self.pi()
         self.aggregator()
 
@@ -29,7 +29,7 @@ class OLH:
 
         for i in range(self.numUsers):
 
-            x = (xxhash.xxh32(str(self.randomIdx[i]), seed=i).intdigest() % (math.exp(self.epsilon) + 1))
+            x = (xxhash.xxh32(str(self.randomIdxs[0][i]), seed=i).intdigest() % (math.exp(self.epsilon) + 1))
 
             if np.random.random_sample() > self.p:
                 y = np.random.randint(0, math.exp(self.epsilon) - 1)

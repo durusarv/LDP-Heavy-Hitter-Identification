@@ -18,7 +18,7 @@ class GRR:
 
         self.numUsers = len(data)
         self.estimate = np.zeros(self.numUsers)
-        self.perturbed = self.estimate = ["" for x in range(self.numUsers)]
+        self.perturbed = ["" for x in range(self.numUsers)]
 
         self.q = 1 / (math.exp(self.epsilon) + self.d - 1)
 
@@ -41,5 +41,5 @@ class GRR:
             for j in range(self.numUsers):
                 if self.perturbed[i] == self.perturbed[j]:
                     self.estimate[i] += 1
-        for i in range(self.estimate):
+        for i in range(len(self.estimate)):
             self.estimate[i] = (self.estimate[i] - (self.numUsers * self.q)) / (self.p - self.q)
