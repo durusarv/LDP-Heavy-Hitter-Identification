@@ -21,7 +21,8 @@ class GRR:
         self.numUsers = len(data)
         self.perturbed = np.zeros(self.numUsers)
 
-        self.randomIdxs = np.random.rand(1, self.numUsers)
+        self.q = 1 / (math.exp(eps) + d - 1)
+        #self.randomIdxs = np.random.rand(1, self.numUsers)
 
     def pi(self):
         for i in range(self.numUsers):
@@ -35,11 +36,9 @@ class GRR:
                 self.pertubed[i] = data[temp]
 
     def aggregator(self):
-
         for i in range(self.numUsers):
             for j in range(self.d):
-                if self.perturbed[i] == (xxhash.xxh32(str(self.randomIdx[i]), seed=i).intdigest() % (math.exp(self.epsilon) + 1)):
+                if pertubed[i] == self.d[j]:
                     self.estimate[j] += 1
-        x = math.exp(self.epsilon) + 1 / (self.p * (math.exp(self.epsilon)) - 1)
-        y = (1.0 * self.numUsers) / (self.p * math.exp(self.epislon) - 1)
-        self.estimate = x * self.estimate - y
+        for i in range(self.estimate):
+            self.estimate[i] = (self.estimate[i] - (self.numUsers * self.q)) / (self.p - self.q)
