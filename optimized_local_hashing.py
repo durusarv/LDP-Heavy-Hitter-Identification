@@ -29,13 +29,15 @@ class OLH:
 
         for i in range(self.numUsers):
 
-            x = (xxhash.xxh32(str(self.randomIdxs[0][i]), seed=i).intdigest() % (math.exp(self.epsilon) + 1))
+            hashed = (xxhash.xxh32(str(self.randomIdxs[0][i]), seed=i).intdigest() % (math.exp(self.epsilon) + 1))
 
             if np.random.random_sample() > self.p:
-                y = np.random.randint(0, math.exp(self.epsilon) - 1)
-                if y >= x:
-                    y += 1
-            self.perturbed[i] = y
+                sample = np.random.randint(0, math.exp(self.epsilon) - 1)
+                if sample >= hashed:
+                    sample += 1
+                self.perturbed[i] = sample
+            else:
+                self.perturbed[i] = hashed
 
     def aggregator(self):
 
