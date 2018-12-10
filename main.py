@@ -11,7 +11,6 @@ def main():
     ss = SampleSelector(sampleSize, domain)
     sampleSet = ss.sampleSet
     real = getCounts(sampleSet, domain)
-    print(sampleSet)
     grr = GRR(epsilon, domain, sampleSet)
     grrEstimate = grr.estimate
     print(real)
@@ -25,8 +24,7 @@ def main():
 '''
 
 def getCounts(sampleSet, domain):
-    real = np.zeros(domain)
-    print(real)
+    real = np.zeros(domain + 1)
     for i in range(len(sampleSet)):
         real[i] += 1
     return real

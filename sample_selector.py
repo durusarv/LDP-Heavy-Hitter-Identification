@@ -16,8 +16,6 @@ class SampleSelector:
             self.sampleSet[i] = random.randint(0, self.domain)
 
 
-
-
 #Old Code
 '''
 import nltk

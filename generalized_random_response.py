@@ -35,11 +35,9 @@ class GRR:
                 while (temp == self.data[i]):
                     temp = np.random.randint(0, self.d)
                 self.perturbed[i] = temp
-        print(self.perturbed)
 
     def aggregator(self):
         for i in range(self.numUsers):
-            print(self.perturbed[i])
             self.estimate[int(self.perturbed[i])] += 1
         for i in range(len(self.estimate)):
             self.estimate[i] = self.estimate[i] * self.p + (self.numUsers - self.estimate[i]) * self.q
