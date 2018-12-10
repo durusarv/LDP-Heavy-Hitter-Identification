@@ -15,12 +15,12 @@ class GRR:
         self.d = domain
         self.epsilon = epsilon
         self.p = math.exp(self.epsilon) / (math.exp(self.epsilon) + self.d - 1)
+        print(self.p)
+        self.q = 1 / (math.exp(self.epsilon) + self.d - 1)
 
         self.numUsers = len(data)
-        self.estimate = np.zeros(self.numUsers)
-        self.perturbed = ["" for x in range(self.numUsers)]
-
-        self.q = 1 / (math.exp(self.epsilon) + self.d - 1)
+        self.estimate = np.zeros(self.d + 1)
+        self.perturbed = np.zeros(self.numUsers)
 
         self.pi()
         self.aggregator()
@@ -31,15 +31,16 @@ class GRR:
             if coin <= self.p:
                 self.perturbed[i] = self.data[i]
             else:
-                temp = np.random.randint(0, len(self.data) - 1)
-                if (temp == i):
-                    temp += 1
-                self.perturbed[i] = self.data[temp]
+                temp = np.random.randint(0, self.d)
+                while (temp == self.data[i]):
+                    temp = np.random.randint(0, self.d)
+                self.perturbed[i] = temp
+        print(self.perturbed)
 
     def aggregator(self):
         for i in range(self.numUsers):
-            for j in range(self.numUsers):
-                if self.perturbed[i] == self.perturbed[j]:
-                    self.estimate[i] += 1
+            print(self.perturbed[i])
+            self.estimate[int(self.perturbed[i])] += 1
         for i in range(len(self.estimate)):
+            self.estimate[i] = self.estimate[i] * self.p + (self.numUsers - self.estimate[i]) * self.q
             self.estimate[i] = (self.estimate[i] - (self.numUsers * self.q)) / (self.p - self.q)
