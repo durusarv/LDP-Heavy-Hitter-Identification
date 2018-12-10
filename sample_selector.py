@@ -1,6 +1,25 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 import random
+import numpy as np
+
+class SampleSelector:
+
+    def __init__(self, sampleSize, domain):
+        self.sampleSize = sampleSize
+        self.domain = domain
+        self.sampleSet = np.zeros(self.sampleSize)
+        self.getNewSampleSet();
+
+    def getNewSampleSet(self):
+        for i in range(self.sampleSize):
+            self.sampleSet[i] = random.randint(0, self.domain)
+
+
+
+
+#Old Code
+'''
 import nltk
 nltk.download('brown')
 from nltk.corpus import brown
@@ -19,7 +38,7 @@ class SampleSelector:
         while (i < self.sampleSize):
             rand = random.randint(0,len(words))
             randWord = words[rand].lower()
-            while (not randWord[0].isalpha() and len(randWord) == 1):
+            while (not randWord[0].isalpha()):
                 rand = random.randint(0,len(words))
                 randWord = words[rand].lower()
             sampleSet.append(randWord)
@@ -31,3 +50,4 @@ class SampleSelector:
 
     def setCategory(self, category):
         self.category = cat
+'''
