@@ -1,4 +1,5 @@
 import numpy as np
+import matplotlib.pyplot as plt
 
 from sample_selector import SampleSelector
 from optimized_local_hashing import OLH
@@ -13,15 +14,10 @@ def main():
     real = getCounts(sampleSet, domain)
     grr = GRR(epsilon, domain, sampleSet)
     grrEstimate = grr.estimate
-    print(real)
-    print(grrEstimate)
-'''
+
     #olh = OLH(epsilon, domain, sampleSet)
-
     #olhEstimate = olh.estimate
-
     #print(olhEstimate)
-'''
 
 def getCounts(sampleSet, domain):
     real = np.zeros(domain + 1)
