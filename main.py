@@ -8,7 +8,7 @@ from prefix_extending_method import PEM
 
 def main():
     domain = 1024
-    sampleSize = 5000
+    sampleSize = 15
     epsilon = 5
     ss = SampleSelector(sampleSize, domain)
     sampleSet = ss.sampleSet

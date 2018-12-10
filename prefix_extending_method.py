@@ -9,14 +9,14 @@ class PEM():
         self.domain = domain
         self.sampleSetBinary = np.copy(sampleSet)
         self.m = self.getM(domain)
-        self.y = 8
-        self.orig_n = 4
+        self.y = 
+        self.orig_n =
         self.n = self.orig_n
 
         for i in range(len(self.sampleSetBinary)):
             self.sampleSetBinary[i] = self.intToBinaryString(self.sampleSetBinary[i])
 
-        self.g = (self.m - self.y) / self.n
+        self.g = math.ceil((self.m - self.y) / self.n)
         self.G = [int(self.g)], []
         #for array in self.G:
         #    array.append()
