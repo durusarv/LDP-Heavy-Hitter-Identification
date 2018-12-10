@@ -15,8 +15,8 @@ def main():
     #real = getCounts(sampleSet, domain)
     grr = GRR(epsilon, domain, sampleSet)
     grrEstimate = grr.estimate
-    print(sampleSet)
-    print(real)
+    #print(sampleSet)
+    #print(real)
     pemReal = PEM(sampleSet, domain)
     #olh = OLH(epsilon, domain, sampleSet)
     #olhEstimate = olh.estimate

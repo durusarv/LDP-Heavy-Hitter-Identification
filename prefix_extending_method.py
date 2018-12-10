@@ -5,7 +5,7 @@ from generalized_random_response import GRR
 
 class PEM():
     def __init__(self, sampleSet, domain):
-        self.sampleset = sampleSet
+        self.sampleSet = sampleSet
         self.domain = domain
         self.sampleSetBinary = np.copy(sampleSet)
         self.m = self.getM(domain)
@@ -36,8 +36,9 @@ class PEM():
                     for k in range(len(self.prefixes[i - 1])):
                         if (tempPrefix[0:self.n - self.orig_n] == self.prefixes[i - 1][k]):
                             temp.append(tempPrefix)
-            tempGRR = GRR(7, (self.y + ((i + 1) * self.orig_n), temp).perturbed
-            for num in tempGRR[0]:
+            perturbedGRR = GRR(7, (self.y + ((i + 1) * self.orig_n)), temp).perturbed
+            print(perturbedGRR)
+            for num in perturbedGRR:
                 num = intToBinaryString(num)
             self.prefixes.append(tempGRR)
             self.n += self.orig_n
