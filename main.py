@@ -14,6 +14,8 @@ def main():
     real = getCounts(sampleSet, domain)
     grr = GRR(epsilon, domain, sampleSet)
     grrEstimate = grr.estimate
+    print(sampleSet)
+    print(real)
 
     #olh = OLH(epsilon, domain, sampleSet)
     #olhEstimate = olh.estimate
@@ -22,7 +24,7 @@ def main():
 def getCounts(sampleSet, domain):
     real = np.zeros(domain + 1)
     for i in range(len(sampleSet)):
-        real[i] += 1
+        real[int(sampleSet[i])] += 1
     return real
 
 if __name__ == "__main__":
