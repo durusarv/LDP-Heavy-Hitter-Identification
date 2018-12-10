@@ -36,11 +36,12 @@ class PEM():
                     for k in range(len(self.prefixes[i - 1])):
                         if (tempPrefix[0:self.n - self.orig_n] == self.prefixes[i - 1][k]):
                             temp.append(tempPrefix)
-            perturbedGRR = GRR(7, (self.y + ((i + 1) * self.orig_n)), temp).perturbed
-            print(perturbedGRR)
+            tempGRR = GRR(20, (self.y + ((i + 1) * self.orig_n)), temp)
+            perturbedGRR = tempGRR.perturbed
             for num in perturbedGRR:
                 num = intToBinaryString(num)
-            self.prefixes.append(tempGRR)
+            print(perturbed)
+            self.prefixes.append(perturbedGRR)
             self.n += self.orig_n
 
 

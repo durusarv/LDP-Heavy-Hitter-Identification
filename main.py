@@ -13,8 +13,8 @@ def main():
     ss = SampleSelector(sampleSize, domain)
     sampleSet = ss.sampleSet
     #real = getCounts(sampleSet, domain)
-    grr = GRR(epsilon, domain, sampleSet)
-    grrEstimate = grr.estimate
+    #grr = GRR(epsilon, domain, sampleSet)
+    #grrEstimate = grr.estimate
     #print(sampleSet)
     #print(real)
     pemReal = PEM(sampleSet, domain)
